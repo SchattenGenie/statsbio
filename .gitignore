@@ -1,1 +1,4 @@
+nilearn_cache/
+*.pkl
+*.json
 .ipynb_checkpoints
