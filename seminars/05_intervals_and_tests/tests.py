@@ -55,7 +55,7 @@ def empirical_false_pos_rate(data, alpha=0.05):
     plt.xlabel('sample size (N)')
     plt.ylabel('P(false positive)')
     plt.title(u'Estimation of type-I error rate as a function of $N$ when $α=0.05$')
-    print("\n   Given N=%i and α=%02g, you can expect false positive rates: \n     For the Welch's t-test: %02g \n     For the bootstrap test: %02g."
+    print("\n   Given N=%i and α=%05g, you can expect false positive rates: \n     For the Welch's t-test: %05g \n     For the bootstrap test: %02g."
           % (data.size // 2, alpha, res_mean[-1, 0], res_mean[-1, 1]))
     print('Done.')
 
@@ -85,11 +85,11 @@ def welch_test(data1, data2, alpha=0.05, tail=2):
         alpha = 2 * alpha
     if p <= alpha:
         if t < 0:
-            print("\n\nResult of the Welch's t-test at level %02g: μ2>μ1, the test passed with p-value = %02g." % (alpha, p))
+            print("\n\nResult of the Welch's t-test at level %05g: μ2>μ1, the test passed with p-value = %05g." % (alpha, p))
         else:
-            print("\n\nResult of the Welch's t-test level %02g: μ1>μ2, the test passed with p-value = %02g." % (alpha, p))
+            print("\n\nResult of the Welch's t-test level %05g: μ1>μ2, the test passed with p-value = %05g." % (alpha, p))
     else:
-        print("\n\nResults of the Welch's t-test level %02g: there is not enough evidence to prove any order relation between μ1 and μ2." % alpha)
+        print("\n\nResults of the Welch's t-test level %05g: there is not enough evidence to prove any order relation between μ1 and μ2." % alpha)
     print("Welch's t-test done.")
 
 
@@ -114,13 +114,13 @@ def bootstrap_test(data1, data2, alpha=0.05):
 
     if decision:
         if np.sign(res.upper_bound) < 0:
-            print("\n\nResult of the bootstrap test at level %02g: μ2>μ1, the test passed with a confidence interval μ1-μ2 in %02g, %02g."
+            print("\n\nResult of the bootstrap test at level %05g: μ2>μ1, the test passed with a confidence interval μ1-μ2 in %05g, %05g."
                   % (alpha, res.lower_bound, res.upper_bound))
         else:
-            print("\n\nResult of the bootstrap test level %02g: μ1>μ2, the test passed with a confidence interval μ1-μ2 in %02g, %02g."
+            print("\n\nResult of the bootstrap test level %05g: μ1>μ2, the test passed with a confidence interval μ1-μ2 in %05g, %05g."
                   % (alpha, res.lower_bound, res.upper_bound))
     else:
-        print("\n\nResults of the bootstrap test level %02g: there is not enough evidence to prove any order relation between μ1 and μ2." % alpha)
+        print("\n\nResults of the bootstrap test level %05g: there is not enough evidence to prove any order relation between μ1 and μ2." % alpha)
     print("Bootstrap test done.")
 
 
